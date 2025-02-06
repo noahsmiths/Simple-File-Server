@@ -22,6 +22,8 @@ const app = new Elysia()
       throw new Error("Unauthorized");
     }
 
+    console.log(`Got new upload request for file ${file.name}`);
+
     const uploadFileName = `${Bun.randomUUIDv7()}.${file.name.substring(file.name.indexOf(".") + 1)}`;
     const uploadTarget = `${FILE_UPLOAD_FOLDER_PATH}/${uploadFileName}`;
     await Bun.write(uploadTarget, file);
